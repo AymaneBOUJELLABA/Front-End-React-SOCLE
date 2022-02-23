@@ -1,26 +1,33 @@
 import React from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
 import './sidemenu.css';
+
+import { Layout, Menu } from 'antd';
+import { BookOutlined, ExperimentOutlined, HomeTwoTone, SettingOutlined, TeamOutlined } from '@ant-design/icons';
+
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 
 function SideMenu(props)
 {
     return (
-        <Nav className="flex-column sidemenu">
-            <Nav.Item eventkey="0">
-                <Nav.Link className="sidenav-links">Dashboard</Nav.Link>
-            </Nav.Item>
-            <NavDropdown title="Administration" id="nav-dropdown">
-                <NavDropdown.Item eventkey="1.1">
-                    <Nav.Link className="sidenav-links">Formations</Nav.Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item eventkey="1.1">
-                    <Nav.Link className="sidenav-links">Enseignants</Nav.Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item eventkey="1.1">
-                    <Nav.Link className="sidenav-links">Unités d'Etude</Nav.Link>
-                </NavDropdown.Item>
-            </NavDropdown>
-        </Nav>
+        <Sider>
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                <Menu.Item key="1" icon={<HomeTwoTone />}>
+                    Tableau de bord
+                </Menu.Item>
+                <SubMenu key="sub" title="Administration" icon={<SettingOutlined />}>
+                    <Menu.Item key="2" icon={<BookOutlined />}>
+                        Formations
+                    </Menu.Item>
+                    <Menu.Item key="3" icon={<TeamOutlined />}>
+                        Enseignants
+                    </Menu.Item>
+                    <Menu.Item key="4" icon={<ExperimentOutlined />}>
+                        Unités d'Etudes
+                    </Menu.Item>
+                </SubMenu> 
+            </Menu>
+        </Sider>
     );
 }
 
