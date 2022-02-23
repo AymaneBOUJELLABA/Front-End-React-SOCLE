@@ -1,19 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './App';
-import { BrowserRouter as Router} from  'react-router-dom';
-import reportWebVitals from './reportWebVitals';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.min.css';
 import './index.css';
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import reportWebVitals from './reportWebVitals';
+
+import App from './App';
+import HomePage from './components/homepage/homepage';
+import Enseignants from './components/enseignants/enseignants';
+import Formations from './components/formations/formation';
+import UniteEtudes from './components/unite-etudes/unite-etudes';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App/>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="formations" element={<Formations />} />
+          <Route path="enseignants" element={<Enseignants />} />
+          <Route path="unites-etude" element={<UniteEtudes />} />          
+        </Route>
+      </Routes>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

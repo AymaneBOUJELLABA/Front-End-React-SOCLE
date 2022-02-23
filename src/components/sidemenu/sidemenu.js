@@ -2,10 +2,12 @@ import React from 'react';
 import './sidemenu.css';
 
 import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 import { BookOutlined, ExperimentOutlined, HomeTwoTone, SettingOutlined, TeamOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
+
 
 function SideMenu(props)
 {
@@ -13,17 +15,25 @@ function SideMenu(props)
         <Sider>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1" icon={<HomeTwoTone />}>
-                    Tableau de bord
+                    <Link to='home'>
+                        Tableau de bord
+                    </Link>
                 </Menu.Item>
                 <SubMenu key="sub" title="Administration" icon={<SettingOutlined />}>
                     <Menu.Item key="2" icon={<BookOutlined />}>
-                        Formations
+                        <Link to='formations'>
+                            Formations
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key="3" icon={<TeamOutlined />}>
-                        Enseignants
+                        <Link to="enseignants">
+                            Enseignants
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key="4" icon={<ExperimentOutlined />}>
-                        Unités d'Etudes
+                        <Link to="unites-etude">
+                            Unités D'Etude
+                        </Link>
                     </Menu.Item>
                 </SubMenu> 
             </Menu>
