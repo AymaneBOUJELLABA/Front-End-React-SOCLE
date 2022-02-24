@@ -17,9 +17,9 @@ import HomePage from './components/homepage/homepage';
 import Enseignants from './components/enseignants/enseignants';
 import Formations from './components/formations/formation';
 import Candidats from './components/candidats/candidats';
+import Promotions from './components/promotions/promotions';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
@@ -27,15 +27,15 @@ ReactDOM.render(
           <Route path="home" element={<HomePage />} />
           <Route path="formations" element={<Formations />} />
           <Route path="enseignants" element={<Enseignants />} />
-          <Route path="candidats" element={<Candidats />} />          
+          <Route path="candidats" element={<Candidats />} />
+          <Route path="promotions" element={<Promotions />} />          
         </Route>
       </Routes>
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals();

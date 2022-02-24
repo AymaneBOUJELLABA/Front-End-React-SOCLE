@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './sidemenu.css';
 
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { BookOutlined, ExperimentOutlined, HomeTwoTone, SettingOutlined, TeamOutlined } from '@ant-design/icons';
+import { BookOutlined, ExperimentOutlined, HomeTwoTone, ReconciliationOutlined, SettingOutlined, TeamOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
-
 
 function SideMenu(props)
 {
@@ -33,6 +32,11 @@ function SideMenu(props)
                     <Menu.Item key="4" icon={<ExperimentOutlined />}>
                         <Link to="candidats">
                             Candidats
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="5" icon={<ReconciliationOutlined />}>
+                        <Link to="promotions">
+                            Promotions
                         </Link>
                     </Menu.Item>
                 </SubMenu> 
