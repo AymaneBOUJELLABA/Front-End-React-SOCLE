@@ -16,7 +16,7 @@ import App from './App';
 import HomePage from './components/homepage/homepage';
 import Enseignants from './components/enseignants/enseignants';
 import Formations from './components/formations/formation';
-import UniteEtudes from './components/unite-etudes/unite-etudes';
+import Candidats from './components/candidats/candidats';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,7 +27,7 @@ ReactDOM.render(
           <Route path="home" element={<HomePage />} />
           <Route path="formations" element={<Formations />} />
           <Route path="enseignants" element={<Enseignants />} />
-          <Route path="unites-etude" element={<UniteEtudes />} />          
+          <Route path="candidats" element={<Candidats />} />          
         </Route>
       </Routes>
     </Router>

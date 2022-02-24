@@ -31,8 +31,8 @@ function SideMenu(props)
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="4" icon={<ExperimentOutlined />}>
-                        <Link to="unites-etude">
-                            Unités D'Etude
+                        <Link to="candidats">
+                            Candidats
                         </Link>
                     </Menu.Item>
                 </SubMenu> 
