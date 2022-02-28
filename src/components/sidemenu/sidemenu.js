@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './sidemenu.css';
 
 import { Layout, Menu } from 'antd';
@@ -10,6 +10,7 @@ const { SubMenu } = Menu;
 
 function SideMenu(props)
 {
+
     return (
         <Sider>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>

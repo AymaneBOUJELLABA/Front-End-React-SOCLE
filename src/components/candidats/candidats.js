@@ -1,10 +1,10 @@
 import { PageHeader, Table } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import { Container } from 'react-bootstrap';
 import './candidats.css';
 
-import { getAllCandidats } from '../../services/candidatsService';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import DataContext from '../../storage/dataContext';
 
 
 const columns = [
@@ -33,36 +33,24 @@ const columns = [
         dataIndex : 'promotion',
         key : 'promotion',
         render : promotion => <Link to="/promotions">{promotion.siglePromotion}</Link>
-    },
+    }
     
     
 ]
 function Candidats(props)
 {
-    const [data, setData] = useState();
+    const navigate = useNavigate();
+    const {candidats} = useContext(DataContext);
 
-    useEffect(() =>
-    {
-        async function loadData()
-        {
-            const response = await getAllCandidats();
-            console.log(response);
-            setData(response);
-        }
-        
-        loadData();
-
-        return () => {
-            setData([])
-        }
-    }, []);
     return (  
         <Container>
-            <PageHeader title="Liste des Candidats"/>
-            <Table 
+            <PageHeader onBack={()=>{navigate('/home')}}
+                title="Candidats" 
+                subTitle="Liste des Candidats"/>
+            <Table
                 size="small" 
                 columns={columns}
-                dataSource={data}
+                dataSource={candidats}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
                 />
         </Container>

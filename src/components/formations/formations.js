@@ -1,9 +1,8 @@
 import { PageHeader, Table } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import { getAllFormations } from '../../services/formationsService';
-
-
+import { useNavigate } from 'react-router-dom';
+import DataContext from '../../storage/dataContext';
 
 const columns = [
     {
@@ -29,30 +28,17 @@ const columns = [
 ]
 function Formations(props)
 {
-    const [data, setData] = useState();
-
-    useEffect(() =>
-    {
-        async function loadData()
-        {
-            const response = await getAllFormations();
-            console.log(response);
-            setData(response);
-        }
-        
-        loadData();
-
-        return () => {
-            setData([])
-        }
-    }, []);
+    const {formations} = useContext(DataContext);
+    const navigate = useNavigate();
     return (  
         <Container>
-            <PageHeader title="Liste des Formations"/>
+            <PageHeader onBack={()=>{navigate('/home')}}
+                title="Formations" 
+                subTitle="Liste des Formations"/>
             <Table 
                 size="small" 
                 columns={columns}
-                dataSource={data}
+                dataSource={formations}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
                 />
         </Container>

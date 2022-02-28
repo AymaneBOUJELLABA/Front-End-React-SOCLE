@@ -1,8 +1,8 @@
 import { PageHeader, Table } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { getAllPromotions } from '../../services/promotionsService';
+import { Link,useNavigate } from 'react-router-dom';
+import DataContext from '../../storage/dataContext';
 import './promotions.css';
 
 
@@ -28,37 +28,23 @@ const columns = [
         title:'Enseignant',
         dataIndex : 'enseignant',
         key:'enseignant',
-        render : enseignant => <Link to="/enseignant">{enseignant.nom + ' ' + enseignant.prenom}</Link>
+        render : enseignant => <Link to="/enseignants">{enseignant.nom + ' ' + enseignant.prenom}</Link>
     },
     
 ]
 function Promotions(props)
 {
-    const [data, setData] = useState([]);
-
-    useEffect(() =>
-    {
-        async function loadData()
-        {
-            const response = await getAllPromotions();
-            console.log(response);
-            setData(response);
-        }
-        
-        loadData();
-
-        return () => {
-            setData([])
-        }
-    }, []);
-
+    const {promotions} = useContext(DataContext);
+    const navigate = useNavigate();
     return ( 
         <Container>
-            <PageHeader title="Liste des Promotions"/>
+            <PageHeader onBack={()=>{navigate('/home')}}
+                title="Enseignants" 
+                subTitle="Liste des Enseignants"/>
             <Table 
                 size="small" 
                 columns={columns}
-                dataSource={data}
+                dataSource={promotions}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
                 />
         </Container>

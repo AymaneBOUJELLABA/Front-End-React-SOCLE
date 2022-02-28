@@ -15,7 +15,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import HomePage from './components/homepage/homepage';
 import Enseignants from './components/enseignants/enseignants';
-import Formations from './components/formations/formation';
+import Formations from './components/formations/formations';
 import Candidats from './components/candidats/candidats';
 import Promotions from './components/promotions/promotions';
 

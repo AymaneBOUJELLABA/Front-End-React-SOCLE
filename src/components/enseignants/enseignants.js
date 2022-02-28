@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-
-import { PageHeader, Pagination, Table } from 'antd';
-
-import { getAllEnseignants } from '../../services/enseignantsService'; 
+import React, { useContext } from 'react';
+import { PageHeader, Table } from 'antd';
 import { Container } from 'react-bootstrap';
+import DataContext from '../../storage/dataContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const columns = [
     { 
@@ -34,31 +34,17 @@ const columns = [
 ]
 function Enseignants(props)
 {
-    const [data, setData] = useState([]);
-
-    useEffect(() =>
-    {
-        async function loadData()
-        {
-            const response = await getAllEnseignants();
-            console.log(response);
-            setData(response);
-        }
-        
-        loadData();
-
-        return () => {
-            setData([])
-        }
-    }, []);
-
+    const {enseignants} = useContext(DataContext);
+    const navigate = useNavigate();
     return (
         <Container>
-            <PageHeader title="Liste des Enseigants"/>
+            <PageHeader onBack={()=>{navigate('/home')}}
+                title="Enseignants" 
+                subTitle="Liste des Enseignants"/>
             <Table 
                 size="small" 
                 columns={columns}
-                dataSource={data}
+                dataSource={enseignants}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
                 />
         </Container>
