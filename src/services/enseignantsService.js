@@ -12,3 +12,13 @@ export const getAllEnseignants = async () => {
     return json;
 }
 
+export const addEnsignant = async (enseignant) => {
+
+    const response = await fetch(API_URL+'/enseignants',
+    { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body : JSON.stringify(enseignant)
+    }
+    )
+}

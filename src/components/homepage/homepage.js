@@ -15,13 +15,17 @@ function HomePage(props)
 {
     const data = useContext(DataContext);
 
+    const isErrorformations = data.formations.error ? true :false ;
+    const isErrorpromotions = data.promotions.error ? true :false ;
+    const isErrorenseignants = data.enseignants.error ? true :false ;
+    const isErrorcandidats = data.fcandidatserror ? true :false ;
 
     return (
         <Container style={{display:'flex' , justifyContent: 'space-around'}}>
             <Link to="/formations">
                 <Card hoverable cover={
                     <Badge count={data.formations.length} status="success">
-                        <Avatar src={formationsImg} shape="square" size={{sm:100,xl:250,xxl:250}}/>
+                        <Avatar src={formationsImg} shape="square" size={{lg:100,xl:250,xxl:250}}/>
                     </Badge>
                 }>
                     <Card.Meta className="stat-title" title="Formations"
@@ -33,7 +37,7 @@ function HomePage(props)
             <Link to="/promotions">
                 <Card hoverable cover={
                     <Badge count={data.promotions.length} status="success">
-                        <Avatar src={ueImg} shape="square" size={{sm:100,xl:250,xxl:250}}/>
+                        <Avatar src={ueImg} shape="square" size={{lg:100,xl:250,xxl:250}}/>
                     </Badge>
                 }>
                     <Card.Meta className="stat-title" title="Promotions"
@@ -46,7 +50,7 @@ function HomePage(props)
                 <Card hoverable 
                     cover={
                         <Badge count={data.enseignants.length} status="success">
-                            <Avatar src={enseignantsImg} shape="square" size={{sm:100,xl:250,xxl:250}}/>
+                            <Avatar src={enseignantsImg} shape="square" size={{lg:100,xl:250,xxl:250}}/>
                         </Badge>
                     }
                 >
@@ -58,7 +62,7 @@ function HomePage(props)
             <Link to="/candidats">
                 <Card hoverable cover={
                     <Badge count={data.candidats.length} status="success">
-                        <Avatar src={candidats} shape="square" size={{sm:100,xl:250,xxl:250}}/>
+                        <Avatar src={candidats} shape="square" size={{lg:100,xl:250,xxl:250}}/>
                     </Badge>
                 }>
                     <Card.Meta className="stat-title" title="Candidats" 
@@ -66,9 +70,6 @@ function HomePage(props)
                     />
                 </Card>
             </Link>
-            
-            
-             
         </Container>
     );
 }

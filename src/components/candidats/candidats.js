@@ -1,4 +1,4 @@
-import { PageHeader, Table } from 'antd';
+import { Alert, PageHeader, Table } from 'antd';
 import React, { useContext} from 'react';
 import { Container } from 'react-bootstrap';
 import './candidats.css';
@@ -47,12 +47,20 @@ function Candidats(props)
             <PageHeader onBack={()=>{navigate('/home')}}
                 title="Candidats" 
                 subTitle="Liste des Candidats"/>
+            {candidats[0] && 
             <Table
                 size="small" 
                 columns={columns}
                 dataSource={candidats}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />
+                />}
+            {candidats.error &&
+            <Alert
+                message={candidats.status + ' - ' + candidats.error}
+                description={candidats.message}
+                type="error"
+                showIcon
+            />}
         </Container>
     );
 }

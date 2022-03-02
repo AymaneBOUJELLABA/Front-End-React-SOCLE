@@ -12,3 +12,13 @@ export const getAllCandidats = async () => {
     return json;
 }
 
+export const addCandidat = async (candidat) => {
+
+    const response = await fetch(API_URL+'/candidats',
+    { 
+        method: 'POST',
+        
+
+    }
+    )
+}

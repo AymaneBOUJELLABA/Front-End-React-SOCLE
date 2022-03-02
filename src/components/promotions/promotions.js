@@ -1,4 +1,4 @@
-import { PageHeader, Table } from 'antd';
+import { Alert, PageHeader, Table } from 'antd';
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link,useNavigate } from 'react-router-dom';
@@ -39,14 +39,22 @@ function Promotions(props)
     return ( 
         <Container>
             <PageHeader onBack={()=>{navigate('/home')}}
-                title="Enseignants" 
+                title="Promotions" 
                 subTitle="Liste des Enseignants"/>
+            {promotions[0] &&
             <Table 
                 size="small" 
                 columns={columns}
                 dataSource={promotions}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />
+                />}
+            {promotions.error && 
+            <Alert
+                message={promotions.status + ' - ' + promotions.error}
+                description={promotions.message}
+                type="error"
+                showIcon
+            />}
         </Container>
      );
 }

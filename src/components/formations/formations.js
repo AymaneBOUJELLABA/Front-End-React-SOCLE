@@ -1,4 +1,4 @@
-import { PageHeader, Table } from 'antd';
+import { Alert, PageHeader, Table } from 'antd';
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -35,12 +35,20 @@ function Formations(props)
             <PageHeader onBack={()=>{navigate('/home')}}
                 title="Formations" 
                 subTitle="Liste des Formations"/>
+            {formations[0] && 
             <Table 
                 size="small" 
                 columns={columns}
                 dataSource={formations}
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />
+                />}
+            {formations.error &&
+            <Alert
+                message={formations.status + ' - ' + formations.error}
+                description={formations.message}
+                type="error"
+                showIcon
+                />}
         </Container>
     );
 }
