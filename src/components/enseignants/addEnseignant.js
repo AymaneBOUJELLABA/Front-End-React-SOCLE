@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, Button, Checkbox, message, Space, Divider, Descriptions } from 'antd';
 import { addEnseignant } from '../../services/enseignantsService';
 
 const formItems = [
@@ -38,18 +38,14 @@ function AddEnseignant(props) {
     return (
         <Form
           name="basic"
-          labelCol={{span: 4,}}
-          wrapperCol={{span: 6,}}
           initialValues={{remember: true,}}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           size="small"
         >
-
             {
                 formItems.map((name,idx) => {
-                    
                     let content = <Form.Item
                         key={idx}
                         label={name}

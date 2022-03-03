@@ -4,13 +4,19 @@ const API_URL = process.env.REACT_APP_LOCAL_API;
 
 export const getAllEnseignants = async () => {
 
-    const response = await fetch(API_URL+'/enseignants' ,
-    { 
-        method: 'GET'
-    });
-    const json = await response.json();
+    try
+    {
+        const response = await fetch(API_URL+'/enseignants' ,
+        { 
+            method: 'GET'
+        });
+        const json = await response.json();
 
-    return json;
+        return json;
+    }catch(e)
+    {
+        return {error : e};
+    }
 }
 
 export const getEnseignantParParam = async (param, idx) =>
@@ -37,24 +43,27 @@ export const getEnseignantParParam = async (param, idx) =>
         return json;
     }catch(e)
     {
-        throw new Error(e);
+        return {error: e}
     }
     
 }
 
-
 export const addEnseignant = async (enseignant) => {
 
-    const response = await fetch(API_URL+'/enseignants',
-    { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body : JSON.stringify(enseignant)
-    })
+    try
+    {
+        const response = await fetch(API_URL+'/enseignants',
+        { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body : JSON.stringify(enseignant)
+        })
+        const json = await response.json();
 
-
-    const json = await response.json();
-
-    return json;
-
+        return json;
+    }catch(e)
+    {
+        return {error :e}
+    }
+    
 }

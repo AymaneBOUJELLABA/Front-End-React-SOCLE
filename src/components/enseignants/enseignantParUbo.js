@@ -27,6 +27,7 @@ function SearchByParamEnseignant(props) {
         }
         getEnseignant(value);
     }
+    
     let content;
 
     const clearData = () => {
