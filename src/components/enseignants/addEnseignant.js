@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
+import { addEnseignant } from '../../services/enseignantsService';
 
 const formItems = [
     "adresse"
@@ -7,7 +8,6 @@ const formItems = [
     ,"emailPerso"
     ,"emailUbo"
     ,"mobile"
-    ,"noEnseignant"
     ,"nom"
     ,"pays"
     ,"prenom"
@@ -19,11 +19,19 @@ const formItems = [
 
 function AddEnseignant(props) {
     
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const onFinish = (values) =>
+    {
+      async function sendRequest(entity)
+      {
+        const response = await addEnseignant(entity);
+        console.log(response);
+        message.success('Enseignant ' + response.nom + ' ajouter avec succes!');
+      }
+      sendRequest(values);
     }
   
-    const onFinishFailed = (errorInfo) => {
+    const onFinishFailed = (errorInfo) =>
+    {
         console.log('Failed:', errorInfo);
     };
   
@@ -54,7 +62,7 @@ function AddEnseignant(props) {
                         },
                         ]}
                     >
-                        {name==="noEnseignant" ? <Input type="number"/>:<Input />}
+                        <Input />
                     </Form.Item>
 
                     return content;

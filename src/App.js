@@ -27,28 +27,52 @@ function App()
   useEffect(() =>
   {
     //CHARGER LES DONNES
-    async function loadData()
+    async function loadEnseignants()
     {
-        const c = await getAllCandidats();
         const e = await getAllEnseignants();
-        const f = await getAllFormations();
-        const p = await getAllPromotions();
-
-        
-        console.log('liste des condidats ',c);
         console.log('liste des enseignants ',e);
-        console.log('liste des formations ',f);
-        console.log('liste des promotions ',p);
-
+        
         setState({
-          candidats : c,
-          formations : f,
-          promotions : p,
+          ...state,
           enseignants : e
         })
     }
+    async function loadCandidats()
+    {
+        const c = await getAllCandidats();
+        console.log('liste des Candidats ',c);
+        
+        setState({
+          ...state,
+          candidats : c
+        })
+    }
+    async function loadFormations()
+    {
+        const c = await getAllFormations();
+        console.log('liste des Formations ',c);
+        
+        setState({
+          ...state,
+          formations : c
+        })
+    }
+    async function loadPromotions()
+    {
+        const c = await getAllPromotions();
+        console.log('liste des Promotions ',c);
+        
+        setState({
+          ...state,
+          promotions : c
+        })
+    }
+    
 
-    loadData();
+    loadEnseignants();
+    loadFormations();
+    loadPromotions();
+    loadCandidats();
     return () => {
       
     };

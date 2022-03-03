@@ -4,7 +4,9 @@ import { Container } from 'react-bootstrap';
 import DataContext from '../../storage/dataContext';
 import { useNavigate } from 'react-router-dom';
 import AddEnseignant from './addEnseignant';
-import { AndroidOutlined, AppleOutlined } from '@ant-design/icons/lib/icons';
+import { AndroidOutlined, AppleOutlined, ProfileOutlined, SearchOutlined, UserAddOutlined } from '@ant-design/icons/lib/icons';
+import SearchByParamEnseignant from './enseignantParUbo';
+import { render } from '@testing-library/react';
 
 
 const columns = [
@@ -40,17 +42,26 @@ function Enseignants(props)
     const [selectedTab, setSelectedTab] = useState(1);
     const navigate = useNavigate();
 
+
+    let subTitle;
+    if(selectedTab == 1)
+        subTitle = 'Liste des Enseignants';
+    if(selectedTab == 2)
+        subTitle = 'Ajouter Un Enseignant';
+    if(selectedTab == 3)
+        subTitle = 'Chercher un Enseignant';
+        
     return (
         <>
         <Container>
             <PageHeader onBack={()=>{navigate('/home')}}
                             title="Enseignants"
-                            subTitle={selectedTab == 1 ?"Liste des Enseignants" : "Ajouter un Enseignant"}/>
+                            subTitle={subTitle}/>
             <Tabs defaultActiveKey={selectedTab} tabPosition="top" onChange={(key)=>setSelectedTab(key)}>
                 <Tabs.TabPane
                     tab={
                         <span>
-                        <AppleOutlined />
+                        <ProfileOutlined />
                         Liste des Enseignants
                         </span>
                     }
@@ -74,13 +85,18 @@ function Enseignants(props)
                 <Tabs.TabPane style={{maxHeight:'65vh',overflow: 'auto'}}
                 tab={
                     <span>
-                    <AndroidOutlined />
+                    <UserAddOutlined />
                     Ajouter un Enseignant
                     </span>
                 }
                 key="2"
                 >
                     <AddEnseignant />
+                </Tabs.TabPane>
+
+                <Tabs.TabPane tab={<span><SearchOutlined />Chercher Un Enseignant</span>}
+                        key="3">
+                    <SearchByParamEnseignant />
                 </Tabs.TabPane>
             </Tabs>
         </Container>
