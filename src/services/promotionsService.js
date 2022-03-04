@@ -11,7 +11,7 @@ export const getAllPromotions = async () => {
         });
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         return {error : e};
@@ -26,16 +26,17 @@ export const getAllPromotions = async () => {
  */
 export const getPromotionParParam = async (param, idx) =>
 {
-    console.log("param" + param +" idx " + idx);
+    console.log("param",param);
+    console.log(" idx ",idx);
     try
     {
-        let URL = API_URL+'/formations/';
+        let URL = API_URL+'/promotions/';
     
         //1 => lieuRentree || 2 => sigle || 3=> /codeFormation/anneeUniversitaire
         switch(idx)
         {
-            case 1 : URL +='lieuRentree/'+param; break;
-            case 2 : URL +='sigle/'+param; break;
+            case 2 : URL +='lieuRentree/'+param; break;
+            case 1 : URL +='sigle/'+param; break;
             case 3 : URL +=param.codeFormation + '/'+param.anneeUniversitaire;break;
             default : throw new Error("Please enter a valid index between 1 and 3 --- 1 => lieuRentree  || 2 => sigle || 3=> codeFormation & anneUniversitaire");
         }
@@ -46,13 +47,17 @@ export const getPromotionParParam = async (param, idx) =>
             method: 'GET'
         });
 
-        console.log(response)
         const json = await response.json();
-        return json;
+
+        return Array.isArray(json) ? json[0] : json;
     
     }catch(e)
     {
-        throw new Error(e);
+        return{
+            error:e,
+            status : "severe!",
+            message:e.message
+        };
     }
     
 }
@@ -69,7 +74,8 @@ export const addPromotion = async (promotion) => {
         })
         const json = await response.json();
         console.log("api result : ",json);
-        return json;
+        
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         return {error:e}

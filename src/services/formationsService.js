@@ -11,7 +11,7 @@ export const getAllFormations = async () => {
         });
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         return {error : e};
@@ -41,7 +41,7 @@ export const getFromationParParam = async (param, idx) =>
 
         const json = await response.json();
 
-        return idx===1? json[0]: json;
+        return Array.isArray(json) ? json[0] : json;
     
     }catch(e)
     {
@@ -62,7 +62,7 @@ export const addFormation = async (formation) => {
         })
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e)

@@ -11,7 +11,7 @@ export const getAllEnseignants = async () => {
         });
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         return {error : e};
@@ -27,7 +27,7 @@ export const getAllEnseignantsFromProf = async () => {
         });
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e)
@@ -56,8 +56,8 @@ export const getEnseignantParParam = async (param, idx) =>
 
         console.log(response)
         const json = await response.json();
-        return json;
-    
+        
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e);
@@ -77,7 +77,7 @@ export const addEnseignant = async (enseignant) => {
         })
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e)

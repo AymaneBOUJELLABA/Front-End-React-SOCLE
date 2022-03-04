@@ -11,7 +11,7 @@ export const getAllCandidats = async () =>
         });
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         return {error : e};
@@ -41,8 +41,7 @@ export const getCandidatsParParam = async (param, idx) =>
 
         console.log(response)
         const json = await response.json();
-        return json;
-    
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e);
@@ -62,7 +61,7 @@ export const addCandidat = async (candidat) => {
         })
         const json = await response.json();
 
-        return json;
+        return Array.isArray(json) ? json[0] : json;
     }catch(e)
     {
         throw new Error(e)

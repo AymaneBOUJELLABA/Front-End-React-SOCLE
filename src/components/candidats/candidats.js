@@ -6,6 +6,7 @@ import './candidats.css';
 import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
 import MainPage from '../shared/MainPage';
+import ChercherCandidat from './chercherCandidat';
 
 
 const columns = [
@@ -50,7 +51,7 @@ function Candidats(props)
             subTitleList={["Liste des Candidats","Ajouter Un Candidat","Chercher Un Candidat"]}
             arrayData={candidats}
             addComponent={<span>ajouter</span>} 
-            searchComponent={<span>chercher</span>}
+            searchComponent={<ChercherCandidat />}
             />
         </>
     );

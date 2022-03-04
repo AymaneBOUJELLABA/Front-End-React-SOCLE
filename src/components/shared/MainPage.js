@@ -56,7 +56,9 @@ function MainPage(props)
                     {props.addComponent}
                 </Tabs.TabPane>
 
-                <Tabs.TabPane tab={<span><SearchOutlined />{props.subTitleList[2]}</span>}
+                <Tabs.TabPane 
+                    style={{maxHeight:'65vh',overflow: 'auto'}}
+                    tab={<span><SearchOutlined />{props.subTitleList[2]}</span>}
                         key="3">
                     {props.searchComponent}
                 </Tabs.TabPane>

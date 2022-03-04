@@ -5,6 +5,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
 import MainPage from '../shared/MainPage';
 import AddPromotion from './addPromotion';
+import ChercherPromotion from './chercherPromotion';
 import './promotions.css';
 
 
@@ -37,8 +38,7 @@ const columns = [
 function Promotions(props)
 {
     const {promotions} = useContext(DataContext);
-    const navigate = useNavigate();
-    
+
     return ( 
         <>
         <MainPage title="Promotions"
@@ -46,7 +46,7 @@ function Promotions(props)
             subTitleList={["Liste des Promotions","Ajouter Une Promotion","Chercher Une Promotion"]}
             arrayData={promotions}
             addComponent={<AddPromotion />} 
-            searchComponent={<span>chercher</span>}
+            searchComponent={<ChercherPromotion />}
             />
         </>
      );
