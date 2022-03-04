@@ -5,6 +5,7 @@ import './candidats.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../shared/MainPage';
 
 
 const columns = [
@@ -43,25 +44,15 @@ function Candidats(props)
     const {candidats} = useContext(DataContext);
 
     return (  
-        <Container>
-            <PageHeader onBack={()=>{navigate('/home')}}
-                title="Candidats" 
-                subTitle="Liste des Candidats"/>
-            {candidats[0] && 
-            <Table
-                size="small" 
-                columns={columns}
-                dataSource={candidats}
-                pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />}
-            {candidats.error &&
-            <Alert
-                message={candidats.status + ' - ' + candidats.error}
-                description={candidats.message}
-                type="error"
-                showIcon
-            />}
-        </Container>
+        <>
+        <MainPage title="Candidats"
+            columns={columns}
+            subTitleList={["Liste des Candidats","Ajouter Un Candidat","Chercher Un Candidat"]}
+            arrayData={candidats}
+            addComponent={<span>ajouter</span>} 
+            searchComponent={<span>chercher</span>}
+            />
+        </>
     );
 }
 

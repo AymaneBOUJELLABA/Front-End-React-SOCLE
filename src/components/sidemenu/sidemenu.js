@@ -2,7 +2,7 @@ import React from 'react';
 import './sidemenu.css';
 
 import { Layout, Menu } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { BookOutlined, ExperimentOutlined, HomeTwoTone, ReconciliationOutlined, SettingOutlined, TeamOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -10,10 +10,22 @@ const { SubMenu } = Menu;
 
 function SideMenu(props)
 {
-
+    const path = useLocation();
+    
+    let selectedMenu;
+    if(path.pathname ==='/home')
+        selectedMenu= '1';
+    if(path.pathname ==='/formations')
+        selectedMenu = '2';
+    if(path.pathname ==='/enseignants')
+        selectedMenu = '3';
+    if(path.pathname ==='/candidats')
+        selectedMenu = '4';
+    if(path.pathname ==='/promotions')
+        selectedMenu = '5';
     return (
         <Sider>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu theme="dark" mode="inline" defaultOpenKeys={['sub']} selectedKeys={[selectedMenu]} >
                 <Menu.Item key="1" icon={<HomeTwoTone />}>
                     <Link to='home'>
                         Tableau de bord

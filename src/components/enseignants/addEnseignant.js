@@ -50,7 +50,7 @@ function AddEnseignant(props) {
                         key={idx}
                         label={name}
                         name={name}
-                        plcaholder={"Veuillez saisir le " + name + " de l'enseignant"}
+                        placeholder={"Veuillez saisir le " + name + " de l'enseignant"}
                         rules={[
                         {
                             required: true,

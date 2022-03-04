@@ -3,6 +3,9 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../shared/MainPage';
+import AddFormation from './addFormation';
+import ChercherFormation from './chercherFormation';
 
 const columns = [
     {
@@ -29,27 +32,18 @@ const columns = [
 function Formations(props)
 {
     const {formations} = useContext(DataContext);
-    const navigate = useNavigate();
+
     return (  
-        <Container>
-            <PageHeader onBack={()=>{navigate('/home')}}
-                title="Formations" 
-                subTitle="Liste des Formations"/>
-            {formations[0] && 
-            <Table 
-                size="small" 
-                columns={columns}
-                dataSource={formations}
-                pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />}
-            {formations.error &&
-            <Alert
-                message={formations.status + ' - ' + formations.error}
-                description={formations.message}
-                type="error"
-                showIcon
-                />}
-        </Container>
+        <>
+        <MainPage title="Formations"
+            columns={columns}
+            subTitleList={["Liste des Formations","Ajouter Une Formation","Chercher Une Formation"]}
+            arrayData={formations}
+            addComponent={<AddFormation />} 
+            searchComponent={<ChercherFormation/>}
+            />
+        </>
+
     );
 }
 

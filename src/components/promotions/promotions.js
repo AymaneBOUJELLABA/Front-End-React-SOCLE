@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link,useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../shared/MainPage';
+import AddPromotion from './addPromotion';
 import './promotions.css';
 
 
@@ -36,26 +38,17 @@ function Promotions(props)
 {
     const {promotions} = useContext(DataContext);
     const navigate = useNavigate();
+    
     return ( 
-        <Container>
-            <PageHeader onBack={()=>{navigate('/home')}}
-                title="Promotions" 
-                subTitle="Liste des Enseignants"/>
-            {promotions[0] &&
-            <Table 
-                size="small" 
-                columns={columns}
-                dataSource={promotions}
-                pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}}
-                />}
-            {promotions.error && 
-            <Alert
-                message={promotions.status + ' - ' + promotions.error}
-                description={promotions.message}
-                type="error"
-                showIcon
-            />}
-        </Container>
+        <>
+        <MainPage title="Promotions"
+            columns={columns}
+            subTitleList={["Liste des Promotions","Ajouter Une Promotion","Chercher Une Promotion"]}
+            arrayData={promotions}
+            addComponent={<AddPromotion />} 
+            searchComponent={<span>chercher</span>}
+            />
+        </>
      );
 }
 

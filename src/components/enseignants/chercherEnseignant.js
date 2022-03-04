@@ -6,7 +6,8 @@ import { getEnseignantParParam } from '../../services/enseignantsService';
 
 const {Item} = Descriptions;
 
-function SearchByParamEnseignant(props) {
+function SearchByParamEnseignant(props)
+{
 
     const [enseignant, setEnseignant] = useState({});
     const [loading, setLoading] = useState(false);
