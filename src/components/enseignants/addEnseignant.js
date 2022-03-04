@@ -43,6 +43,8 @@ function AddEnseignant(props) {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           size="small"
+          labelCol={{ span: 4 }}
+          wrapperCol={{ span: 8 }}
         >
             {
                 formItems.map((name,idx) => {

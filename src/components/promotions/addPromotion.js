@@ -90,7 +90,7 @@ function AddPromotion(props)
                                 ))
                             }
                         </Select>
-                    </Form.Item>
+                </Form.Item>
                     <Form.Item labelCol={{ span: 10}}
                             wrapperCol={{ span: 20 }}
                     name="formation" label="formation" rules={[{required:true,message:'l\'formation est requis'}]}>

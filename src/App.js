@@ -31,21 +31,26 @@ function App()
         const ep = await getAllEnseignantsFromProf();
         setEnseignant(e);
         setEnseignantsProf(ep);
+
+        console.log('loadEnseignants',[e,ep]);
     }
     async function loadCandidats()
     {
         const c = await getAllCandidats();
         setCandidats(c);
+        console.log('loadCandidats',c);
     }
     async function loadFormations()
     {
         const f = await getAllFormations();
         setFormations(f);
+        console.log('loadFormations',f);
     }
     async function loadPromotions()
     {
         const p = await getAllPromotions();
         setPromotions(p);
+        console.log('loadPromotions',p);
     }
     
 

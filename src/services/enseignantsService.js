@@ -11,10 +11,14 @@ export const getAllEnseignants = async () => {
         });
         const json = await response.json();
 
-        return Array.isArray(json) ? json[0] : json;
+        return json;
     }catch(e)
     {
-        return {error : e};
+        return {
+            error:e,
+            status : "severe!",
+            message:e.message
+        };;
     }
 }
 
@@ -27,7 +31,7 @@ export const getAllEnseignantsFromProf = async () => {
         });
         const json = await response.json();
 
-        return Array.isArray(json) ? json[0] : json;
+        return json;
     }catch(e)
     {
         throw new Error(e)

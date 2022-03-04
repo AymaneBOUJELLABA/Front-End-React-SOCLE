@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
 import MainPage from '../shared/MainPage';
 import ChercherCandidat from './chercherCandidat';
+import AddCandidat from './AddCandidat';
 
 
 const columns = [
@@ -34,7 +35,7 @@ const columns = [
         title :'Promotion',
         dataIndex : 'promotion',
         key : 'promotion',
-        render : promotion => <Link to="/promotions">{promotion.siglePromotion}</Link>
+        render : promotion => <Link to="/promotions">{promotion?promotion.siglePromotion:'null'}</Link>
     }
     
     
@@ -50,7 +51,7 @@ function Candidats(props)
             columns={columns}
             subTitleList={["Liste des Candidats","Ajouter Un Candidat","Chercher Un Candidat"]}
             arrayData={candidats}
-            addComponent={<span>ajouter</span>} 
+            addComponent={<AddCandidat/>} 
             searchComponent={<ChercherCandidat />}
             />
         </>

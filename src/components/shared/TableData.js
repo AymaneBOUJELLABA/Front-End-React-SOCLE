@@ -21,8 +21,7 @@ function TableData(props)
                 showIcon
                 />
             }
-        </>
-        
+        </>  
     );
 }
 
